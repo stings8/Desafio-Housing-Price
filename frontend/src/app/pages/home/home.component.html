@@ -1,0 +1,136 @@
+<div fxLayoutAlign="center center" fxLayout="column">
+    <h1>Iris Model - Example</h1>
+
+    <   <div class="home__training">
+        <h3>Treino Gradient Boosting Regression</h3>
+        <md-card fxLayoutAlign="center center" fxLayout="column">
+            <button md-raised-button (click)="trainModel()">
+                Train model
+            </button>
+
+        </md-card>
+
+        <div *ngIf="gradResult"
+             fxLayoutAlign="center center"
+             fxLayout="column">
+            <h4>Training Accuracy</h4>
+            <ngx-charts-linear-gauge
+                [view]="[300, 100]"
+                [value]="gradResult.accuracy"
+                [scheme]="colorScheme"
+                [min]="0"
+                [max]="100"
+                [units]="'% accuracy'">
+            </ngx-charts-linear-gauge>
+        </div>
+    </div>
+
+    <div class="home__prediction"
+         fxLayoutAlign="center center"
+         fxLayout="column">
+        <h3>Predict Iris classes</h3>
+
+        <md-card fxLayoutAlign="center center" fxLayout="column">
+            <h4>Insira os valores</h4>
+            <div fxLayout="row">
+                <md-input-container>
+                    <input mdInput
+                           name="CRIM"
+                           placeholder="CRIM"
+                           [(ngModel)]="Boston.CRIM">
+                </md-input-container>
+                <md-input-container>
+                    <input mdInput
+                           name="ZN"
+                           placeholder="ZN"
+                           [(ngModel)]="Boston.ZN">
+                </md-input-container>
+            </div>
+            <div fxLayout="row">
+                <md-input-container>
+                    <input mdInput
+                           name="INDUS"
+                           placeholder="INDUS"
+                           [(ngModel)]="Boston.INDUS">
+                </md-input-container>
+                <md-input-container>
+                    <input mdInput
+                           name="CHAS"
+                           placeholder="CHAS"
+                           [(ngModel)]="Boston.CHAS">
+                </md-input-container>
+                <md-input-container>
+                    <input mdInput
+                           name="NOX"
+                           placeholder="NOX"
+                           [(ngModel)]="Boston.NOX">
+                </md-input-container>
+                <md-input-container>
+                    <input mdInput
+                           name="RM"
+                           placeholder="RM"
+                           [(ngModel)]="Boston.RM">
+                </md-input-container>
+                <md-input-container>
+                    <input mdInput
+                           name="AGE"
+                           placeholder="AGE"
+                           [(ngModel)]="Boston.AGE">
+                </md-input-container>
+                <md-input-container>
+                    <input mdInput
+                           name="DIS"
+                           placeholder="DIS"
+                           [(ngModel)]="Boston.DIS">
+                </md-input-container>
+                <md-input-container>
+                    <input mdInput
+                           name="RAD"
+                           placeholder="RAD"
+                           [(ngModel)]="Boston.RAD">
+                </md-input-container>
+                <md-input-container>
+                    <input mdInput
+                           name="TAX"
+                           placeholder="TAX"
+                           [(ngModel)]="Boston.TAX">
+                </md-input-container>
+                <md-input-container>
+                    <input mdInput
+                           name="PTRATIO"
+                           placeholder="PTRATIO"
+                           [(ngModel)]="Boston.PTRATIO">
+                </md-input-container>
+                <md-input-container>
+                    <input mdInput
+                           name="B"
+                           placeholder="B"
+                           [(ngModel)]="Boston.B">
+                </md-input-container>
+                <md-input-container>
+                    <input mdInput
+                           name="LSTAT"
+                           placeholder="LSTAT"
+                           [(ngModel)]="Boston.LSTAT">
+                </md-input-container>
+                <md-input-container>
+                    <input mdInput
+                           name="MEDV"
+                           placeholder="MEDV"
+                           [(ngModel)]="Boston.MEDV">
+                </md-input-container>
+            </div>
+            <div>
+                <button md-raised-button (click)="predictPrice()">Predict Price</button>
+            </div>
+        </md-card>
+
+        <div *ngIf="probabilityPredictions"
+             fxLayoutAlign="center center"
+             fxLayout="column"
+             class="home__chart-container">
+            <h4>Prediction Result</h4>
+            <img src={{imgsrc}} width="500">
+        </div>
+    </div>
+</div>
